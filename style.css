@@ -1,0 +1,139 @@
+#app {
+  padding-top: 10%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.pregame {
+  font-size: 40px;
+  display: flex;
+  align-items: baseline;
+}
+
+input {
+  border: none;
+  outline: none;
+  color: green;
+  width: auto;
+}
+
+.upWrap {
+  display: flex;
+}
+
+.person {
+  width: 50%;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.player {
+  color: green;
+}
+
+.monster {
+  color: red;
+}
+
+.healthBg {
+  background-color: #a2a2a2;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.healthBar {
+  transition: all 0.5s;
+  margin-top: 50px;
+  background-color: green;
+  height: 50px;
+  width: 100%;
+  margin: 40px 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controller {
+  border: 1px solid #a2a2a2;
+  box-shadow: -1px 1px 5px #929292;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 0 10px;
+}
+
+.battle-log {
+  margin: 40px 0;
+  border: 1px solid #a2a2a2;
+  box-shadow: -1px 1px 5px #929292;
+  padding: 20px 50px;
+  max-height: 50vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+li p {
+  padding: 3px 0;
+}
+
+.playerLog {
+  color: green;
+  background-color: #b2ffb2;
+}
+
+.monsterLog {
+  color: red;
+  background-color: #ffb2b2;
+}
+
+@media all and (max-width: 1030px) {
+  .pregame {
+    display: block;
+  }
+}
+
+@media all and (max-width: 550px) {
+  #app {
+    width: 90%;
+  }
+  .person h1 {
+    font-size: 1.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .controller {
+    flex-wrap: wrap;
+    padding: 0 25px;
+    /* flex-direction: column; */
+  }
+  button {
+    margin: 10px 5px;
+    flex-basis: 40%;
+  }
+  .battle-log {
+    padding-bottom: 0;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    max-height: 40vh;
+  }
+  li p {
+    margin-bottom: 10px;
+  }
+}

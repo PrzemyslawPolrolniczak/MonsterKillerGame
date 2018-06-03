@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Monster attack game</title>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="!nameSet">
+            <div class="pregame">
+                <h1 style="display: inline; margin-right: 10px;">My name is </h1>
+                <input type="text" v-model="player" v-on:keyup.enter="nameSet = true" maxlength="20" autofocus>
+            </div>
+            <p>Hit enter to continue.</p>
+        </template>
+        <template v-else>
+            <div class="upWrap">
+                <div class="person player">
+                    <h1>{{player}}</h1>
+                    <div class="healthBg">
+                        <div class="healthBar" :style="playerHealthStyle">{{playerHealth}}</div>
+                    </div>
+                </div>
+                <div class="person monster">
+                    <h1>Monster</h1>
+                    <div class="healthBg">
+                        <div class="healthBar" :style="monsterHealthStyle">{{monsterHealth}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="controller">
+                <template v-if="!start">
+                    <button type="button" class="btn btn-primary" @click="[start = !start, startGame()]">Start the game</button>
+                </template>
+                <template v-else>
+                    <button type="button" class="btn btn-danger" @click="attack">Attack</button>
+                    <button type="button" class="btn btn-warning" @click="special" :disabled="!specialAvailable">{{specialLabel}}</button>
+                    <button type="button" class="btn btn-success" @click="heal">Heal</button>
+                    <button type="button" class="btn btn-secondary" @click="start = !start">Give up</button>
+                </template>
+            </div>
+            <div class="battle-log" v-if="battleLog.length > 0">
+                <ul>
+                    <li v-for="(log, index) in battleLog">
+                        <p v-if="index % 2 == 0" class="playerLog">{{player}} {{log.type}}s for {{log.val}} damage</p>
+                        <p v-else class="monsterLog">Monster {{log.type}}s for {{log.val}} damage</p>
+                    </li>
+                    <li v-if="playerHealth <= 0"> You Died.</li>
+                    <li v-if="monsterHealth <= 0"> Monster Died.</li>
+                </ul>
+            </div>
+        </template>
+    </div>
+</body>
+<script src="app.js"></script>
+
+</html>
